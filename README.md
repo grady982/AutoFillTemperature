@@ -8,13 +8,13 @@
 - `symptom`: symptom1 ~ symptom7
 - `commute`: commute1 ~ commute5
 
-### Example
+### Intasll chromedriver
+https://chromedriver.chromium.org/downloads<br>
+download the chromedriver into this repository
 
-```
-npx https://github.com/grady982/AutoFillTemperature
-  --url1=https://familyweb.wistron.com/whrs/login.aspx
-  --url2=https://familyweb.wistron.com/whrs/temperature.aspx
-  --employeeID=11005092
-  --symptom=symptom1
-  --commute=commute_way3
-```
+### Selenium
+- https://www.npmjs.com/package/selenium-webdriver/v/4.1.0
+- https://www.selenium.dev/documentation/webdriver/browser/alerts/
+
+### yargs
+- https://www.npmjs.com/package/yargs
