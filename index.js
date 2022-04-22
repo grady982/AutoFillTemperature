@@ -1,6 +1,5 @@
 const { Builder, By, until } = require("selenium-webdriver");
-const yargs = require("yargs/yargs");
-const argv = yargs(process.argv).argv;
+const config = require("config");
 
 const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(() => resolve(), ms));
@@ -9,12 +8,15 @@ const sleep = (ms) => {
 async function main() {
   let driver = await new Builder().forBrowser("chrome").build();
   try {
-    const { url1, url2, employeeID, symptom, commute } = argv;
+    const { url1, url2, employeeID, symptom, commute } = config;
 
     await driver.get(`${url1}`);
+    await sleep(1000);
     await driver.findElement(By.id("userpass")).sendKeys(employeeID);
+    await sleep(1000);
     await driver.findElement(By.name("iform")).submit();
-    await driver.wait(until.urlIs(`${url2}`), 5000);
+    // await driver.wait(until.urlIs(`${url2}`), 8000);
+    await sleep(3000);
     await driver.findElement(By.id(`${symptom}`)).click();
     await driver.findElement(By.id(`${commute}`)).click();
     await driver.findElement(By.id("btn")).click();
