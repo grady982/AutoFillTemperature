@@ -6,7 +6,10 @@ const sleep = (ms) => {
 };
 
 async function main() {
-  let driver = await new Builder().forBrowser("chrome").build();
+  let driver = await new Builder()
+    .forBrowser("chrome")
+    .usingServer("http://localhost:4444")
+    .build();
   try {
     const { url1, url2, employeeID, symptom, commute } = config;
 

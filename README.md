@@ -1,6 +1,6 @@
 # Auto Fill Temperature
 
-### Configuration
+## Configuration
 
 - `url1`: login page
 - `url2`: temperature report page
@@ -21,16 +21,26 @@
   - commute4 : 其他
   - commute5 : 今日未進台灣辦公廠區
 
-### Intasll chromedriver
-
-https://chromedriver.chromium.org/downloads
-download the chromedriver into this repository
-
 ### set crontab
 
-```
-$ crontab -e
-$ 30 08 * * * npx PATH/index.js
+```shell
+crontab -e
+30 08 * * * npx PATH/index.js
 ### check setting
-$ crontab -l
+crontab -l
 ```
+
+### 使用 selenium container 執行體溫回報腳本
+
+解決 local chrome version 與 chomedriver mismatch 的問題
+
+```shell
+docker container run -d -p 4444:4444 --shm-size="2g" selenium/standalone-chrome
+# password: secret
+which node
+/usr/local/bin/node index.js
+```
+
+有空再優化把體溫回報改成 scheduler 包成 container，再透過 docker compose 把 selenium 和 nodejs 環境啟起來
+
+[Selenium Docker Tutorial](https://dev.to/automationbro/selenium-docker-tutorial-4dkg)
